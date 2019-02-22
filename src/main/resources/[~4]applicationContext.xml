@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- setter injection :: p namespace 사용하기 p:변수명-ref="참조할 객체 ID or name p:변수명="설정할값" -->
+
+	<!-- p name space.. --><!-- <bean id="tv" class="day01_DI_setterInjection.SamsungTV" p:speaker-ref="sony" 
+		p:price="2700000"/> <bean id="apple" class="day01_DI_setterInjection.AppleSpeaker"/> 
+		<bean id="sony" class="day01_DI_setterInjection.SonySpeaker"/> -->
+
+	<!-- collection 객체 설정하기 -->
+	<bean id="collectionBean"
+		class="day01_DI_Collection.CollectionBean">
+		<property name="addressList">
+			<!-- list 타입 -->
+			<!-- <list> <value>서울시 강남구 역삼동</value> <value>서울시 성동구 행당동</value> </list> -->
+			<!-- set 타입 중복제거 -->
+			<!-- <set value-type="java.lang.String"> <value>서울시 강남구 역삼동</value> <value>서울시 
+				성동구 행당동</value> <value>서울시 성동구 행당동</value> </set> -->
+
+			<!-- Map -->
+			<!-- <map> <entry> <key><value>고길동</value></key> <value>서울시 강남구 역삼동</value> 
+				</entry> <entry> <key><value>마이콜</value></key> <value>서울시 강서구 화곡동</value> 
+				</entry> 다른 표현방식 <entry key="고길동" value="서울시 강남구 역삼동"/> <entry key="마이콜" 
+				value="서울시 강서구 화곡동"/> </map> -->
+			<!-- properties -->
+			<props>
+				<prop key="고길동">서울시 강남구 역삼동</prop>
+				<prop key="마이콜">서울시 강서구 화곡동</prop>
+
+			</props>
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- bean 등록하기 id, class -->
+	<!-- <bean id="tv" class="day01_config.SamsungTV"></bean> -->
+	
+	<!-- bean class명으로 등록하기 -->
+	<!-- <bean class="day01_config.SamsungTV"></bean> -->
+	
+	<!-- ** init-method **
+		init-method(servlet:init()과 같은 기능을 한다. 
+		해당 bean의 객체를 생성 후  해당 객체의 메소드를 먼저 호출한다. 멤버변수의 초기화 작업을 할 수 있음.
+	-->
+	<!-- <bean id="tv" class="day01_config.SamsungTV" init-method="initMethod"/>  -->
+	
+	<!-- ** destroy-method ** 
+		destroy-method 객체가 삭제되기 직전에 호출될 메소드를 지정한다.
+	-->
+	<!-- <bean id="tv" class="day01_config.SamsungTV" init-method="initMethod" destroy-method="destroyMethod"/>-->
+	<!-- ** lazy-init **
+		:pre-loading 대신에 lazy-loading방식 사용 :: 해당 bean이 사용되는 시점에 bean 객체를 생성한다.
+		
+	 -->
+	
+	<!-- <bean id="tv" class="day01_config.SamsungTV" lazy-init="true" init-method="initMethod" destroy-method="destroyMethod"/> -->
+	
+	<!-- ** scope 속성 ** 
+		:: singleton - 하나의 객체만 생성.
+		:: prototype - 매번 새로운 색체를 반환한다.
+	 -->
+	<!-- <bean id="tv" class="day01_config.SamsungTV" scope="prototype"/> -->
+	
+	
+	<!-- <bean id="tv" class="day01_DI.SamsungTV"/> -->
+			
+	<!-- ** 생성자 인젝션(Constructor Injection 이해하기) 
+		생성자 매개변수로 참조할 클래스를 constructor-arg 에 설정함.
+		ref = "beanID" value="문자열또는 정수같은 기본형 데이터"
+		index :: 0~ n , 매개변수의 인덱스를 표기한다.
+	 -->
+	<!-- <bean id="tv" class="day01_DI.SamsungTV">
+		<constructor-arg index="0" ref="apple"></constructor-arg>
+		<constructor-arg index="1" value="27000000"></constructor-arg>
+	</bean>
+	<bean id="sony" class="day01_DI.SonySpeaker"></bean>
+	<bean id="apple" class="day01_DI.AppleSpeaker"></bean>
+	 -->
+	 
+	 <!-- 
+	 	** setter injection 
+	 	property 속성을 이용한다.
+	 -->
+	 <bean id="tv" class="day01_DI_setterInjection.SamsungTV">
+	 	<property name="speaker" ref="apple"></property>
+	 	<property name="price" value="2700000"></property>
+	 </bean>
+	 <bean id="apple" class="day01_DI_setterInjection.AppleSpeaker"></bean>
+</beans>
